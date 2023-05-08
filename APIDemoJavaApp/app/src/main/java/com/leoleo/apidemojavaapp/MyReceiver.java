@@ -14,9 +14,13 @@ public class MyReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         final String packageName = intent.getStringExtra(Intent.EXTRA_PACKAGE_NAME);
         final LocaleList localeList = intent.getParcelableExtra(Intent.EXTRA_LOCALE_LIST, LocaleList.class);
-        Log.d("TAG", "onReceive: packageName= " + packageName);
-        Log.d("TAG", "onReceive: localeList= " + localeList);
-        Log.d("TAG", "onReceive: localeList= " + LocalePreferences.getTemperatureUnit());
-        Log.d("TAG", "onReceive: localeList= " + LocalePreferences.getFirstDayOfWeek());
+        final StringBuilder message = new StringBuilder();
+        message.append("onReceive: packageName= ").append(packageName).append("\n");
+        message.append("localeList = ").append(localeList).append("\n");
+        message.append("getHourCycle = ").append(LocalePreferences.getHourCycle()).append("\n");
+        message.append("getCalendarType = ").append(LocalePreferences.getCalendarType()).append("\n");
+        message.append("getTemperatureUnit = ").append(LocalePreferences.getTemperatureUnit()).append("\n");
+        message.append("getFirstDayOfWeek = ").append(LocalePreferences.getFirstDayOfWeek()).append("\n");
+        Log.d("TAG", message.toString());
     }
 }
